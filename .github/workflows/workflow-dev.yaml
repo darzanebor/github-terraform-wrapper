@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Terraform install
-        uses: darzanebor/github-terraform-wrapper@v0.0.2e
+        uses: darzanebor/github-terraform-wrapper@latest
         with:
           tf_command: 'install'
 
