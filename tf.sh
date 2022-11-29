@@ -1,6 +1,17 @@
 #!/usr/bin/env bash
-HELP_MESSAGE="sub commands:\n  - fmt"
+HELP_MESSAGE="sub commands:\n  - fmt\n  - install\n  - init\n  - plan\n  - apply"
+TERRAFORM_URL="https://releases.hashicorp.com/terraform/$(curl -s https://checkpoint-api.hashicorp.com/v1/check/terraform | jq -r -M '.current_version')/terraform_$(curl -s https://checkpoint-api.hashicorp.com/v1/check/terraform | jq -r -M '.current_version')_darwin_amd64.zip"
 case $1 in
+  "install" )
+    if [ ! -f "$GITHUB_WORKSPACE/bin/terraform" ]; then
+        echo -e "Downloading terraform ${RELEASE_VERSION}"
+        curl -L "${TERRAFORM_URL}" -o terraform.zip
+        unzip terraform.zip
+        mv terraform $GITHUB_WORKSPACE/bin/
+        echo -e "Installed terraform:\n"
+        $GITHUB_WORKSPACE/bin/terraform version
+    fi
+    ;;
   "init" )
     terraform -chdir=$2 init -input=false
     ;;
