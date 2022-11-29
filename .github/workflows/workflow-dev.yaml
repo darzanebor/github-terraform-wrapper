@@ -10,5 +10,5 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Check install 
-        run: ./tf.sh install
+        run: ls -l . && ./tf.sh install && which bash && env
         shell: bash
