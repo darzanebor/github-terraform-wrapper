@@ -13,6 +13,9 @@ jobs:
     name: githubaction check
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
       - name: Terraform install
         uses: darzanebor/github-terraform-wrapper@v0.0.2c
         with:
