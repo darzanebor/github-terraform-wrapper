@@ -16,7 +16,7 @@ jobs:
       - name: Terraform install
         uses: darzanebor/github-terraform-wrapper@v0.0.2b
         with:
-             tf_command: 'install'
+          tf_command: 'install'
 
       - name: Terraform fmt
         uses: darzanebor/github-terraform-wrapper@v0.0.2b
