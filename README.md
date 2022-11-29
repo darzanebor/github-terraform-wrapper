@@ -17,12 +17,12 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Terraform install
-        uses: darzanebor/github-terraform-wrapper@v0.0.2d
+        uses: darzanebor/github-terraform-wrapper@v0.0.2e
         with:
           tf_command: 'install'
 
       - name: Terraform fmt
-        uses: darzanebor/github-terraform-wrapper@v0.0.2d
+        uses: darzanebor/github-terraform-wrapper@v0.0.2e
         env:
           GITHUB_TOKEN: "${{ secrets.OAUTH_TOKEN }}"        
         with:
