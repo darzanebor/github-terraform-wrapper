@@ -14,12 +14,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Terraform install
-        uses: darzanebor/github-terraform-wrapper@v0.0.2b
+        uses: darzanebor/github-terraform-wrapper@v0.0.2c
         with:
           tf_command: 'install'
 
       - name: Terraform fmt
-        uses: darzanebor/github-terraform-wrapper@v0.0.2b
+        uses: darzanebor/github-terraform-wrapper@v0.0.2c
         env:
           GITHUB_TOKEN: "${{ secrets.OAUTH_TOKEN }}"        
         with:
