@@ -16,7 +16,7 @@ case $1 in
         echo -e "Downloading terraform"
         mkdir -p "${HOME}/.local/bin"
         echo "${HOME}/.local/bin" >> $GITHUB_PATH
-        curl -L "${TERRAFORM_URL}" -o terraform.zip
+        curl -Ls "${TERRAFORM_URL}" -o terraform.zip
         unzip terraform.zip
         mv ./terraform "${HOME}/.local/bin/"
         rm -rf terraform.zip
