@@ -2,11 +2,15 @@
 #
 ##### Examples:
 ```
+...
+env:
+  tf_working_dir: './env/dev'
+....
 - name: Terraform format
-  uses: darzanebor/github-terraform-wrapper@v0.0.1
-  env:
-    GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"        
-  with:
-    tf_command: 'fmt'
-    tf_path: './env/dev'
+  uses: darzanebor/github-terraform-wrapper@v0.0.2a
+   env:
+     GITHUB_TOKEN: "${{ secrets.OAUTH_TOKEN }}"        
+   with:
+     tf_command: 'fmt'
+     tf_path: "${{ env.tf_working_dir }}"
 ```
