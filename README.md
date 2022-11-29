@@ -61,7 +61,9 @@ jobs:
           tf_command: 'install'
           
       - name: Terraform fmt
-        uses: darzanebor/github-terraform-wrapper@v0.0.3   
+        uses: darzanebor/github-terraform-wrapper@v0.0.3
+        env:
+          GITHUB_TOKEN: "${{ secrets.OAUTH_TOKEN }}"        
         with:
           tf_command: 'fmt'
           tf_path: "${{ env.tf_working_dir }}"
