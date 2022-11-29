@@ -1,4 +1,4 @@
-name: Terraform Action - Muffs
+name: Terraform Github Wrapper
 description: Wrapper for terraform
 branding:
   icon: 'play-circle'
