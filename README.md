@@ -18,6 +18,8 @@ jobs:
 
       - name: Terraform install
         uses: darzanebor/github-terraform-wrapper@v0.0.2e
+        env:
+          TERRAFORM_VERSION: '1.3.4' # Default version is latest for terraform obtained from releases
         with:
           tf_command: 'install'
 
