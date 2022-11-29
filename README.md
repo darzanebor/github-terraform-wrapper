@@ -39,16 +39,14 @@ provider "yandex" {
 ```
 on:
   push:
+  workflow_dispatch:
 
 env:
-  tf_working_dir: './env/infra'
-  TF_VAR_yandex_token: ""
-  AWS_ACCESS_KEY_ID: ""
-  AWS_SECRET_ACCESS_KEY: ""
+  tf_working_dir: './tf'
 
 jobs:
   check:
-    name: githubaction check
+    name: Terraform IaC
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -63,7 +61,7 @@ jobs:
           tf_command: 'install'
           
       - name: Terraform fmt
-        uses: darzanebor/github-terraform-wrapper@v0.0.3
+        uses: darzanebor/github-terraform-wrapper@v0.0.3   
         with:
           tf_command: 'fmt'
           tf_path: "${{ env.tf_working_dir }}"
@@ -71,21 +69,29 @@ jobs:
       - name: Terraform init
         uses: darzanebor/github-terraform-wrapper@v0.0.3
         env:
-          TF_VAR_yandex_token: "${{ env.TF_VAR_yandex_token }}"
-          AWS_ACCESS_KEY_ID: "${{ env.AWS_ACCESS_KEY_ID }}"
-          AWS_SECRET_ACCESS_KEY: "${{ env.AWS_SECRET_ACCESS_KEY }}"
+          TF_VAR_yandex_token: "${{ secrets.YANDEX_TOKEN }}"
+          AWS_ACCESS_KEY_ID: "${{ secrets.AWS_ACCESS_KEY_ID }}"
+          AWS_SECRET_ACCESS_KEY: "${{ secrets.AWS_SECRET_ACCESS_KEY }}"
         with:
           tf_command: 'init'
           tf_path: "${{ env.tf_working_dir }}"
 
       - name: Terraform plan
         uses: darzanebor/github-terraform-wrapper@v0.0.3
+        env:
+          TF_VAR_yandex_token: "${{ secrets.YANDEX_TOKEN }}"
+          AWS_ACCESS_KEY_ID: "${{ secrets.AWS_ACCESS_KEY_ID }}"
+          AWS_SECRET_ACCESS_KEY: "${{ secrets.AWS_SECRET_ACCESS_KEY }}"
         with:
           tf_command: 'plan'
           tf_path: "${{ env.tf_working_dir }}"
 
       - name: Terraform apply
         uses: darzanebor/github-terraform-wrapper@v0.0.3
+        env:
+          TF_VAR_yandex_token: "${{ secrets.YANDEX_TOKEN }}"
+          AWS_ACCESS_KEY_ID: "${{ secrets.AWS_ACCESS_KEY_ID }}"
+          AWS_SECRET_ACCESS_KEY: "${{ secrets.AWS_SECRET_ACCESS_KEY }}"
         with:
           tf_command: 'apply'
           tf_path: "${{ env.tf_working_dir }}"
