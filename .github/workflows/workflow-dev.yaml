@@ -9,7 +9,9 @@ jobs:
     name: githubaction check
     runs-on: ubuntu-latest
     steps:
-      - name: Terraform install
-        uses: darzanebor/github-terraform-wrapper@v0.0.2c
-        with:
-          tf_command: 'install'
+      - run: ./tf.sh install
+    
+#      - name: Terraform install
+#        uses: darzanebor/github-terraform-wrapper@v0.0.2c
+#        with:
+#          tf_command: 'install'
