@@ -19,7 +19,7 @@ case $1 in
         curl -L "${TERRAFORM_URL}" -o terraform.zip
         unzip terraform.zip
         mv terraform "${HOME}/.local/bin/"
-        rm -rf {terraform.zip,terraform}
+        rm -rf terraform.zip
         echo -e "Installed terraform:\n"        
         terraform version
     fi
