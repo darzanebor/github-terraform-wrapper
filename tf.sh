@@ -18,10 +18,9 @@ case $1 in
         echo "${HOME}/.local/bin" >> $GITHUB_PATH
         curl -L "${TERRAFORM_URL}" -o terraform.zip
         unzip terraform.zip
-        ls -l .
         mv ./terraform "${HOME}/.local/bin/"
         rm -rf terraform.zip
-        echo -e "Installed terraform:\n"        
+        echo -e "Installed terraform:\n"
         terraform version
     fi
     ;;
