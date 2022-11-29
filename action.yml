@@ -1,0 +1,31 @@
+name: Terraform Action - Muffs
+description: Wrapper for terraform
+branding:
+  icon: 'play-circle'
+  color: 'blue'
+
+inputs:
+  tf_command:
+    description: tf sub command
+    required: true
+  tf_path:
+    description: tf dir
+    required: false
+    default: "."
+  git_pattern:
+    description: git add pattern
+    required: false
+    default: "."
+
+
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: echo "RUN_TIME=`date +'%Y-%m-%d-%M:%S.%N'`" >> $GITHUB_ENV
+    - shell: bash
+      run: ${{ github.action_path }}/tf.sh ${{ inputs.tf_command }} ${{ inputs.tf_path }}
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        file_pattern: ${{ inputs.git_pattern }}
+        commit_message: "terraform ${{ inputs.tf_command }} at ${{ env.RUN_TIME }}"
