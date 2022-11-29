@@ -12,7 +12,3 @@ jobs:
 
       - name: Check install 
         run: ./tf.sh install
-
-      - name: Validate install
-        run: terraform version
-
