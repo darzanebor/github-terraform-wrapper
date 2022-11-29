@@ -3,13 +3,14 @@ HELP_MESSAGE="sub commands:\n  - fmt\n  - install\n  - init\n  - plan\n  - apply
 TERRAFORM_URL="https://releases.hashicorp.com/terraform/$(curl -s https://checkpoint-api.hashicorp.com/v1/check/terraform | jq -r -M '.current_version')/terraform_$(curl -s https://checkpoint-api.hashicorp.com/v1/check/terraform | jq -r -M '.current_version')_darwin_amd64.zip"
 case $1 in
   "install" )
-    if [ ! -f "/usr/bin/terraform" ]; then
+    if [ ! -f "${HOME}/.local/bin/terraform" ]; then
+        echo "${HOME}/.local/bin" >> $GITHUB_PATH        
         echo -e "Downloading terraform"
         curl -L "${TERRAFORM_URL}" -o terraform.zip
         unzip terraform.zip
-        mv terraform /usr/bin/
+        mv terraform "${HOME}/.local/bin/"
         echo -e "Installed terraform:\n"
-        /usr/bin/terraform version
+        "${HOME}/.local/bin/terraform" version
     fi
     ;;
   "init" )
