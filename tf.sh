@@ -13,7 +13,7 @@ fi
 case $1 in
   "install" )
     if [ ! -f "${HOME}/.local/bin/terraform" ]; then
-        echo -e "Downloading terraform"
+        echo -e "Downloading terraform\n"
         mkdir -p "${HOME}/.local/bin"
         echo "${HOME}/.local/bin" >> $GITHUB_PATH
         curl -Ls "${TERRAFORM_URL}" -o terraform.zip
