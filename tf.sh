@@ -11,7 +11,8 @@ case $1 in
         unzip terraform.zip
         mv terraform "${HOME}/.local/bin/"
         echo -e "Installed terraform:\n"
-        "${HOME}/.local/bin/terraform" version
+        rm -rf {terraform.zip,terraform}
+        terraform version
     fi
     ;;
   "init" )
