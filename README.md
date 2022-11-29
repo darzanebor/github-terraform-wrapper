@@ -55,7 +55,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Terraform install
-        uses: darzanebor/github-terraform-wrapper@v0.0.2f
+        uses: darzanebor/github-terraform-wrapper@v0.0.3
         env:
           # Defaults to latest terraform release
           TERRAFORM_VERSION: '1.3.5'
@@ -63,13 +63,13 @@ jobs:
           tf_command: 'install'
           
       - name: Terraform fmt
-        uses: darzanebor/github-terraform-wrapper@v0.0.2f   
+        uses: darzanebor/github-terraform-wrapper@v0.0.3
         with:
           tf_command: 'fmt'
           tf_path: "${{ env.tf_working_dir }}"
 
       - name: Terraform init
-        uses: darzanebor/github-terraform-wrapper@v0.0.2f
+        uses: darzanebor/github-terraform-wrapper@v0.0.3
         env:
           TF_VAR_yandex_token: "${{ env.TF_VAR_yandex_token }}"
           AWS_ACCESS_KEY_ID: "${{ env.AWS_ACCESS_KEY_ID }}"
@@ -79,13 +79,13 @@ jobs:
           tf_path: "${{ env.tf_working_dir }}"
 
       - name: Terraform plan
-        uses: darzanebor/github-terraform-wrapper@v0.0.2f
+        uses: darzanebor/github-terraform-wrapper@v0.0.3
         with:
           tf_command: 'plan'
           tf_path: "${{ env.tf_working_dir }}"
 
       - name: Terraform apply
-        uses: darzanebor/github-terraform-wrapper@v0.0.2f
+        uses: darzanebor/github-terraform-wrapper@v0.0.3
         with:
           tf_command: 'apply'
           tf_path: "${{ env.tf_working_dir }}"
