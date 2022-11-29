@@ -22,7 +22,6 @@ case $1 in
         rm -rf terraform.zip
         echo -e "\nInstalled terraform:"
         terraform version
-        echo -e "\n"
     fi
     ;;
   "init" )
