@@ -33,7 +33,7 @@ provider "yandex" {
 }
 ```
 #
-##### worflow.yaml
+##### workflow.yaml
 #
 
 ```
