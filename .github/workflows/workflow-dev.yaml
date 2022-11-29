@@ -9,6 +9,9 @@ jobs:
     name: githubaction check
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
       - run: ./tf.sh install
     
 #      - name: Terraform install
