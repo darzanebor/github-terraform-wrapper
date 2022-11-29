@@ -12,9 +12,4 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Terraform install
-        uses: darzanebor/github-terraform-wrapper@latest
-        with:
-          tf_command: 'install'
-
-#      - run: ./tf.sh install
+      - run: ./tf.sh install
