@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Terraform install
-        uses: darzanebor/github-terraform-wrapper@v0.0.2e
+        uses: darzanebor/github-terraform-wrapper@v0.0.2f
         env:
           # Defaults to latest terraform release
           TERRAFORM_VERSION: '1.3.4'
@@ -25,7 +25,7 @@ jobs:
           tf_command: 'install'
 
       - name: Terraform fmt
-        uses: darzanebor/github-terraform-wrapper@v0.0.2e
+        uses: darzanebor/github-terraform-wrapper@v0.0.2f
         env:
           GITHUB_TOKEN: "${{ secrets.OAUTH_TOKEN }}"        
         with:
