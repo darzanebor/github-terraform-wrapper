@@ -15,7 +15,7 @@ case $1 in
     if [ ! -f "${HOME}/.local/bin/terraform" ]; then
         echo -e "Downloading terraform\n"
         mkdir -p "${HOME}/.local/bin"
-        echo "${HOME}/.local/bin" >> $GITHUB_PATH
+        echo "${HOME}/.local/bin" >> "$GITHUB_PATH"
         curl -Ls "${TERRAFORM_URL}" -o terraform.zip
         unzip terraform.zip
         mv ./terraform "${HOME}/.local/bin/"
@@ -25,16 +25,16 @@ case $1 in
     fi
     ;;
   "init" )
-    terraform -chdir=$2 init -input=false
+    terraform -chdir="$2" init -input=false
     ;;
   "plan" )
-    terraform -chdir=$2 plan -input=false
+    terraform -chdir="$2" plan -input=false
     ;;
   "apply" )
-    terraform -chdir=$2 apply -auto-approve
+    terraform -chdir="$2" apply -auto-approve
     ;;    
   "fmt" )
-    terraform -chdir=$2 fmt -recursive
+    terraform -chdir="$2" fmt -recursive
     ;;
   * )
     echo -e "${HELP_MESSAGE}\n"
