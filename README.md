@@ -45,6 +45,7 @@ env:
   tf_working_dir: './tf'
   # Defaults to latest terraform release
   TERRAFORM_VERSION: '1.3.5'
+  # GITHUB TOKEN USED for fmt to upload process code
   GITHUB_TOKEN: "${{ secrets.OAUTH_TOKEN }}"  
   TF_VAR_yandex_token: "${{ secrets.YANDEX_TOKEN }}"
   AWS_ACCESS_KEY_ID: "${{ secrets.AWS_ACCESS_KEY_ID }}"
